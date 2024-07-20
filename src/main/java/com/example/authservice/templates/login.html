@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+<body>
+<h1>Вход</h1>
+<form th:action="@{/login/login}" th:object="${loginDto}" method="post" id="loginForm">
+    <div>
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" th:field="*{username}" />
+        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Имя пользователя ошибка</span>
+    </div>
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" th:field="*{password}" />
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Пароль ошибка</span>
+    </div>
+    <div>
+        <button type="submit">Войти</button>
+    </div>
+    <p th:if="${error}" th:text="${error}">Ошибка входа</p>
+</form>
+
+</body>
+</html>
